@@ -1,9 +1,11 @@
 import * as Icon from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function NavBar() {
+  const location = useLocation();
+
   return (
-    <nav className="h-[15vh] md:h-[12vh] bg-[#f7583e] flex justify-between items-center">
+    <nav className="h-[12vh] max-[500px]:h-[10vh] bg-[#f7583e] max-[1000px]:h-[15vh] flex justify-between items-center ">
       <div>
         <Link
           to={"/"}
@@ -15,10 +17,22 @@ function NavBar() {
       </div>
       <ul className="flex mr-[10px] items-center gap-[10px] mt-[15px]">
         <li>
-          <Icon.Cart size={35} color="#f6f6f6" className="mb-[5px]" />
+          <Link to={"cart"}>
+            {location.pathname == "/cart" ? (
+              <Icon.CartFill size={35} color="#f6f6f6" className="mb-[5px]" />
+            ) : (
+              <Icon.Cart size={35} color="#f6f6f6" className="mb-[5px]" />
+            )}
+          </Link>
         </li>
         <li>
-          <Icon.Heart size={30} color="#f6f6f6" />
+          <Link to={"likes"}>
+            {location.pathname == "/likes" ? (
+              <Icon.HeartFill size={30} color="#f6f6f6" />
+            ) : (
+              <Icon.Heart size={30} color="#f6f6f6" />
+            )}
+          </Link>
         </li>
 
         <li

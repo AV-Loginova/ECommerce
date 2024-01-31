@@ -2,9 +2,12 @@ import { categoriesCatalogue } from "../../data/data";
 import { Link } from "react-router-dom";
 import VideoBar from "./videoBar";
 
-function Home() {
+function Home({ categoryType }: any) {
+  function handleCategory(e: React.MouseEvent<HTMLElement>) {
+    categoryType(e.currentTarget.id);
+  }
   return (
-    <div className="flex flex-col items-center bg-[#f6f6f6]">
+    <div className="flex flex-col items-center bg-[#f6f6f6] h-[100vh]">
       <VideoBar />
       <h1 className="text-[#f7583e] mt-[2vh] mb-4">BinoShop</h1>
       <p className="w-[90vw] text-center md:w-[60vw]">
@@ -19,7 +22,13 @@ function Home() {
       </p>
       <section className="flex gap-[10px] flex-col md:flex-row">
         {categoriesCatalogue.map((category) => (
-          <Link key={category.id} to={"/catalogue"} className="no-underline">
+          <Link
+            key={category.id}
+            id={category.description}
+            to={"/catalogue"}
+            className="no-underline"
+            onClick={handleCategory}
+          >
             <figure className="md:w-[20vw] bg-[#f7583e] w-[90vw]">
               <img
                 src={category.img}
