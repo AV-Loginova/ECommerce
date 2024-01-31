@@ -6,15 +6,15 @@ import Catalogue from "./components/Cataloque/Catalogue";
 import { useState } from "react";
 import LikesPage from "./components/Likes/LikesPage";
 import CartPage from "./components/Cart/CartPage";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [category, setCategory] = useState("");
   function handleCategory(val: string) {
-    console.log(val);
     setCategory(val);
   }
   return (
-    <div className="w-[100vw] h-full bg-[#f6f6f6]">
+    <div className="min-h-[100vh] w-[100vw] overflow-visible bg-[#f6f6f6] flex flex-col">
       <NavBar />
       <Routes>
         <Route path="/" element={<Home categoryType={handleCategory} />} />
@@ -25,6 +25,7 @@ function App() {
         <Route path="/likes" element={<LikesPage />} />
         <Route path="/cart" element={<CartPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

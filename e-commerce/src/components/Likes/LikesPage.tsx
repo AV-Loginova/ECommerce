@@ -6,13 +6,13 @@ function LikesPage() {
     console.log(e.currentTarget.id);
   }
   return (
-    <div className="h-[100vh] w-full text-[#f7583e] mt-[5vh] text-center flex flex-col items-center gap-[3vh]">
+    <div className="w-full text-[#f7583e] mt-[5vh] text-center flex flex-col items-center gap-[3vh] pb-[30px]">
       <h1>Your likes</h1>
       {emptyLikes.map((product) => {
         return (
           <div
             key={product.id}
-            className="flex gap-[20px] w-[600px] bg-[white] p-2 rounded items-center h-[15vh]"
+            className="flex gap-[20px] min-w-[70vw] max-w-[600px] bg-[white] p-2 rounded items-center h-[15vh]"
           >
             <p className="text-black m-0">{product.id}.</p>
             <img className="text-black m-0" src="img" alt="img" />

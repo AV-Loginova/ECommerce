@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import Product from "./product";
 import { CatalogueData } from "../../data/data";
 import ProductInfo from "./productInfo";
+import CatalogueNav from "./catalogueNav";
 
 type Props = { props: string };
 
 function Catalogue({ props }: Props) {
   const [data, setData] = useState<CatalogueData[]>([]);
   const [info, setInfo] = useState<string>();
+  const [category, setCategory] = useState(props);
 
   useEffect(() => {
     async function fetchData() {
@@ -25,22 +27,40 @@ function Catalogue({ props }: Props) {
 
   function handleClose(e: React.MouseEvent<HTMLElement>) {
     e && setInfo("");
-    console.log(props);
+  }
+
+  function handleCategory(val: string) {
+    setCategory(val);
   }
 
   return (
-    <div className="h-[100vh] bg-[#f6f6f6] flex flex-wrap gap-[20px] mt-[30px] px-[10vh] justify-center">
-      {info ? (
-        <ProductInfo props={info} close={handleClose} />
-      ) : (
-        data
-          .filter((product) => product.category == props)
-          .map((product) => {
-            return (
-              <Product key={product.id} props={product} onClick={handleInfo} />
-            );
-          })
-      )}
+    <div className=" bg-[#f6f6f6] flex flex-col flex-1">
+      <CatalogueNav
+        onClick={handleCategory}
+        onClose={handleClose}
+        category={props}
+      />
+      <div className="flex flex-wrap gap-[20px] my-[30px] px-[10vh] justify-center">
+        {info ? (
+          <ProductInfo props={info} close={handleClose} />
+        ) : (
+          data
+            .filter((product) =>
+              category
+                ? product.category == category
+                : product.category !== "electronics"
+            )
+            .map((product) => {
+              return (
+                <Product
+                  key={product.id}
+                  props={product}
+                  onClick={handleInfo}
+                />
+              );
+            })
+        )}
+      </div>
     </div>
   );
 }

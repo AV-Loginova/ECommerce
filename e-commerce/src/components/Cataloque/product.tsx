@@ -24,7 +24,12 @@ function Product({ props, onClick }: any) {
         )}
       </button>
 
-      <img src={props.image} alt={props.title} className="p-[20px] h-[30vh] " />
+      <img
+        onClick={handleClick}
+        src={props.image}
+        alt={props.title}
+        className="p-[20px] h-[30vh] "
+      />
       <figcaption
         onClick={handleClick}
         className="w-[100%] bg-[#f7583e] rounded-b-lg text-white h-[15vh] flex text-center items-center justify-center p-1"

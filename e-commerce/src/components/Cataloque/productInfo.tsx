@@ -39,7 +39,7 @@ function ProductInfo({ props, close }: any) {
 
   return (
     <div
-      className="py-[50vh] lg:py-[10vh] h-[100vh] md:h-[60vh] bg-[#f6f6f6] flex md:flex-row flex-col 
+      className="lg:py-[10vh] md:h-[60vh] bg-[#f6f6f6] flex md:flex-row flex-col 
     justify-center sm:items-center gap-[20px] text-[#f7583e] md:mt-[10vh] "
     >
       <button onClick={handleClose}>

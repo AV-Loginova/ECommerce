@@ -1,13 +1,14 @@
 import { categoriesCatalogue } from "../../data/data";
 import { Link } from "react-router-dom";
 import VideoBar from "./videoBar";
+import { useState } from "react";
 
 function Home({ categoryType }: any) {
   function handleCategory(e: React.MouseEvent<HTMLElement>) {
     categoryType(e.currentTarget.id);
   }
   return (
-    <div className="flex flex-col items-center bg-[#f6f6f6] h-[100vh]">
+    <div className="flex flex-col items-center bg-[#f6f6f6]">
       <VideoBar />
       <h1 className="text-[#f7583e] mt-[2vh] mb-4">BinoShop</h1>
       <p className="w-[90vw] text-center md:w-[60vw]">
