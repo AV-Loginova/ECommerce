@@ -23,7 +23,7 @@ export const categoriesCatalogue: category[] = [
   },
 ];
 
-type category = {
+export type category = {
   id: number;
   title: string;
   img: string;
